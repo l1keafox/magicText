@@ -4,6 +4,15 @@
   --pink: rgb(244,143,177)
 }
 
+@keyframes scale {
+  from,to{
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
 
 @keyframes background-pan {
   from {
@@ -11,6 +20,15 @@
   }
   to {
     background-position: -200% center;
+  }
+}
+
+@keyframes rotate {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(180deg);
   }
 }
 
@@ -34,6 +52,32 @@ h1{
 }
 
 h1 > .magic {
+  display: inline-block;
+  position: relative;
+}
+
+h1 > .magic .magic-star {
+  --size:clamp(20px,1.5vw,30px);
+  animation: scale 700ms ease infinite;
+
+  display: block;
+  height: var(--size);
+  left: var(--star-left);
+  position:absolute;
+  top: var(--star-top);
+  width:var(--size);
+}
+h1 > .magic > .magic-star > svg {
+  animation: rotate 1000ms linear infinite;
+  display: block;
+  opacity: 0.7;
+}
+
+h1 > .magic > .magic-star > svg > path {
+  fill: var(--violet);
+}
+
+h1 > .magic > .magic-text{
   animation: background-pan 3s linear infinite;
   background: linear-gradient(
     to right,
